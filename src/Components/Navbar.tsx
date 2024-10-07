@@ -91,7 +91,7 @@ function Navbar() {
                 Profile
               </button>
               {isDropdownOpen && (
-                <div className="absolute right-0 w-40 bg-white shadow-lg rounded-md z-50 dropdown-menu">
+                <div className="absolute right-0 w-40 bg-white shadow-lg rounded-md overflow-hidden z-50 dropdown-menu">
                   <Link
                     to="/profile"
                     onClick={closeDropdown}

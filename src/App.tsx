@@ -9,12 +9,14 @@ import { setProducts } from "./Features//Products";
 import { login } from "./Features/User";
 import Home from "./Pages/Home";
 import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import Profile from "./Pages/Profile";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     axios
-      .get("/api/v1/products", {
+      .get("api/v1/products", {
         withCredentials: true, // Ensures cookies are sent along with the request if needed
       })
       .then((res) => {
@@ -36,6 +38,7 @@ function App() {
         .get("/api/v1/user/profile", {
           headers: {
             Authorization: `Bearer ${token}`, // Send token in the Authorization header
+            credentials: true,
           },
         })
         .then((res) => {
@@ -56,7 +59,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/about" element={"Hello"} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<h2>404</h2>} /> {/* For handling 404 */}
       </Routes>
       <Toaster />
